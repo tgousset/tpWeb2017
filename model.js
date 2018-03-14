@@ -3,33 +3,29 @@
 // N'oubliez pas l'héritage !
 function Drawing(){
     this.shapes = [];
-    this.addShape = function (shape) {
-        this.shapes.push(shape);
-    }.bind(this);
-    this.removeShape = function (index) {
-        this.shapes.slice(index, 1);
-    }.bind(this);
+    this.addShape = function(shape) { this.shapes.push(shape);}.bind(this);
+    this.removeShape = function(index) { this.shapes.splice(index,1); }.bind(this);
 }
 
-function Shape(color, thickness) {
+function Shape(color, thickness){
     this.color = color;
     this.thickness = thickness;
 }
 
-function Line(xBegin, yBegin, xEnd, yEnd, color, thickness ) {
-    Shape.call(this, color, thickness);
-    this.xBegin = xBegin;
-    this.yBegin = yBegin;
-    this.xEnd = xEnd;
-    this.yEnd = yEnd;
+function Line(x1,y1,x2,y2,color,thickness){
+    Shape.call(this,color,thickness);
+    this.x1 = x1;
+    this.y1 = y1;
+    this.x2 = x2;
+    this.y2 = y2;
 }
 Line.prototype = new Shape();
 
-function Rectangle(xBegin, xEnd, width, height, color, thickness){
-    Shape.call(this, color, thickness);
-    this.xBegin = xBegin;
-    this.xEnd = xEnd;
+function Rectangle(x1,y1,width,height,color,thickness){
+    Shape.call(this,color,thickness);
+    this.x1 = x1;
+    this.y1 = y1;
     this.height = height;
     this.width = width;
 }
-Rectangle.propotype = new Shape();
+Rectangle.prototype = new Shape();
